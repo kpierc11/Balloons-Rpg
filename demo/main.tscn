@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c6ek13h1fgfmy"]
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 324)
+
+[node name="BalloonManager" type="BalloonManager" parent="."]
