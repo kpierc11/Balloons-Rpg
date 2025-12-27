@@ -1,0 +1,69 @@
+# =========================
+# Godot generated files
+# =========================
+.import/
+.export/
+.export_presets.cfg
+.godot/
+
+# Godot editor cache (Godot 4)
+.editor/
+.editor_settings/
+
+# =========================
+# Builds / Exports
+# =========================
+bin/
+build/
+dist/
+out/
+
+# Web export output (VERY IMPORTANT)
+web/
+html5/
+*.wasm
+*.js
+*.html
+*.zip
+*.pck
+
+# =========================
+# C++ build artifacts
+# =========================
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.exp
+*.pdb
+
+# CMake / SCons
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+.sconsign.dblite
+
+# godot-cpp build output
+godot-cpp/bin/
+godot-cpp/gen/
+godot-cpp/build/
+
+# =========================
+# IDE / OS junk
+# =========================
+.vscode/
+.idea/
+*.swp
+*.tmp
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log

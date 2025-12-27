@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://yha1ccmwr2m0"]
+
+[ext_resource type="Script" uid="uid://cr7u20jqr6sc4" path="res://assets/scripts/button.gd" id="1_gvk52"]
+[ext_resource type="Texture2D" uid="uid://cck42rciorvuq" path="res://assets/background/1.png" id="2_ljn4s"]
+[ext_resource type="Texture2D" uid="uid://ciwn6fybsw3c1" path="res://assets/background/2.png" id="3_w8h0y"]
+[ext_resource type="Texture2D" uid="uid://du2eoamimlhq" path="res://assets/background/3.png" id="4_5x8rc"]
+[ext_resource type="Texture2D" uid="uid://b6ku7ae15lmo6" path="res://assets/background/4.png" id="5_52n7k"]
+[ext_resource type="Texture2D" uid="uid://d3kwrbumw6jbb" path="res://assets/background/5.png" id="6_ank1t"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 232.0
+offset_right = 365.0
+offset_bottom = 298.0
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+script = ExtResource("1_gvk52")
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(321, 185)
+scale = Vector2(1.1128472, 1.1450617)
+texture = ExtResource("2_ljn4s")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(277, 206)
+texture = ExtResource("3_w8h0y")
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(325.5, 189)
+scale = Vector2(1.0711806, 1.0987654)
+texture = ExtResource("4_5x8rc")
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(318.99997, 199.5)
+scale = Vector2(1.1111112, 1.0401235)
+texture = ExtResource("5_52n7k")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(321, 207)
+scale = Vector2(1.1111112, 1)
+texture = ExtResource("6_ank1t")
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button" to="CanvasLayer/Control/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button2" to="CanvasLayer/Control/VBoxContainer/Button" method="_on_button_2_pressed"]

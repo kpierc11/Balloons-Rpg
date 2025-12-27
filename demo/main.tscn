@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6ek13h1fgfmy"]
 
-[ext_resource type="Texture2D" uid="uid://dka8at7t2fvam" path="res://assets/Background/1.png" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://dw1mf3cwvowau" path="res://assets/Background/2.png" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://c5wiwharfiuo3" path="res://assets/Background/3.png" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://bm17o8fbx6w44" path="res://assets/Background/4.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dka8at7t2fvam" path="res://assets/background/blue sky/1.png" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dw1mf3cwvowau" path="res://assets/background/blue sky/2.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c5wiwharfiuo3" path="res://assets/background/blue sky/3.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bm17o8fbx6w44" path="res://assets/background/blue sky/4.png" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://401qukyfa6f7" path="res://assets/sounds/Mario Paint OST - BGM 3.mp3" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
@@ -28,8 +28,8 @@ scale = Vector2(1.1371528, 1.1358023)
 texture = ExtResource("1_0xm2m")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(319, 166)
-scale = Vector2(1.123264, 1.0864198)
+position = Vector2(319.75003, 182.99998)
+scale = Vector2(1.1328126, 1.0925926)
 texture = ExtResource("2_h2yge")
 
 [node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
@@ -38,27 +38,9 @@ scale = Vector2(1.1145834, 0.81867296)
 texture = ExtResource("3_h2yge")
 
 [node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(323, 223.99998)
-scale = Vector2(1.0052085, 0.83719134)
+position = Vector2(319.875, 195.00002)
+scale = Vector2(1.125434, 1.0050154)
 texture = ExtResource("4_1bvp3")
 
 [node name="BalloonManager" type="BalloonManager" parent="CanvasLayer"]
-position = Vector2(329.5, 185.99997)
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 329.5
-offset_top = 185.99997
-offset_right = 369.5
-offset_bottom = 225.99997
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -253.5
-offset_top = -172.99997
-offset_right = -201.5
-offset_bottom = -149.99997
-text = "Score: "
-metadata/_edit_use_anchors_ = true
+balloonAmount = 194
