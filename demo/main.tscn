@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6ek13h1fgfmy"]
+[gd_scene load_steps=11 format=3 uid="uid://c6ek13h1fgfmy"]
 
 [ext_resource type="Texture2D" uid="uid://dka8at7t2fvam" path="res://assets/background/blue sky/1.png" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dw1mf3cwvowau" path="res://assets/background/blue sky/2.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c5wiwharfiuo3" path="res://assets/background/blue sky/3.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bm17o8fbx6w44" path="res://assets/background/blue sky/4.png" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://401qukyfa6f7" path="res://assets/sounds/Mario Paint OST - BGM 3.mp3" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cpjtjcu0vfggr" path="res://assets/scenes/ui.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://brje27bf8lno" path="res://assets/sprites/balloons/blue-balloon.png" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://cmjihlnixurga" path="res://assets/sprites/balloons/green-balloon.png" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bvsaw57vnrgfp" path="res://assets/sprites/balloons/yellow-balloon.png" id="8_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dkh260q7cq1mt" path="res://assets/sprites/balloons/red-balloon.png" id="9_dg77c"]
 
 [node name="Main" type="Node2D"]
 
@@ -43,4 +48,6 @@ scale = Vector2(1.125434, 1.0050154)
 texture = ExtResource("4_1bvp3")
 
 [node name="BalloonManager" type="BalloonManager" parent="CanvasLayer"]
-balloonAmount = 194
+"Balloon Sprites" = [ExtResource("6_kek77"), ExtResource("7_4c57u"), ExtResource("8_efxa6"), ExtResource("9_dg77c")]
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("6_7mycd")]

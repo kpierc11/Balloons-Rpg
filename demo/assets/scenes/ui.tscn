@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpjtjcu0vfggr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5k2w"]
+bg_color = Color(0.24705882, 0.25490198, 0.2784314, 0.43529412)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="Menu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 32.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Level" type="Label" parent="Control/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_q5k2w")
+text = "Level: 1"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 5.0
+offset_right = 106.0
+offset_bottom = 32.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Level" type="Label" parent="Control/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_q5k2w")
+text = "Score:"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+offset_left = 487.0
+offset_top = 11.0
+offset_right = 572.0
+offset_bottom = 38.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10

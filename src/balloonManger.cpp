@@ -10,9 +10,12 @@ using namespace godot;
 void godot::BalloonManager::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setBalloonAmount", "balloonAmount"), &BalloonManager::setBalloonAmount);
 	ClassDB::bind_method(D_METHOD("getBalloonAmount"), &BalloonManager::getBalloonAmount);
+	ClassDB::bind_method(D_METHOD("setBalloonSprites"), &BalloonManager::setBalloonSprites);
+	ClassDB::bind_method(D_METHOD("getBalloonSprites"), &BalloonManager::getBalloonSprites);
 
 	// Register property so it shows in the inspector & scripts
-	ADD_PROPERTY(PropertyInfo(Variant::INT, "balloonAmount"), "setBalloonAmount", "getBalloonAmount");
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "Amount of Balloons"), "setBalloonAmount", "getBalloonAmount");
+	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "Balloon Sprites", PROPERTY_HINT_ARRAY_TYPE, "Texture2D"), "setBalloonSprites", "getBalloonSprites");
 }
 
 godot::BalloonManager::BalloonManager() {
@@ -56,13 +59,15 @@ void godot::BalloonManager::_ready() {
 	Vector2 vpSize = vpRect.size;
 
 	for (int i = 0; i < balloonAmount; i++) {
-		float ranBalloonPos = mRng->randf_range(0.0f ,500.0f);
+		float ranBalloonPos = mRng->randf_range(0.0f, vpRect.size.x);
 		float ranBalloonFloatSpeed = mRng->randf_range(20.0f, 100.0f);
 		float speed = ranBalloonFloatSpeed;
+		Ref<Texture2D> randomTexture = balloonSprites[mRng->randi_range(0, balloonSprites.size() - 1)];
 
 		Balloon *balloon = memnew(Balloon);
-		balloon->set_position(Vector2(ranBalloonPos, windowSize.height + 10.0f));
+		balloon->set_position(Vector2(ranBalloonPos, vpRect.size.y + 100.0f));
 		balloon->setSpeed(ranBalloonFloatSpeed);
+		balloon->set_texture(randomTexture);
 		//balloon->set_visible(false);
 
 		add_child(balloon);
@@ -96,6 +101,14 @@ void godot::BalloonManager::createBalloon() {
 	}
 }
 
+void godot::BalloonManager::setBalloonSprites(const Array &p_array) {
+    balloonSprites = p_array;
+}
+
+Array godot::BalloonManager::getBalloonSprites() const {
+    return balloonSprites;
+}
+
 void godot::BalloonManager::_process(double delta) {
 	//set mouse area position to the mouse location
 	float mouseX = get_local_mouse_position().x;
@@ -110,13 +123,11 @@ void godot::BalloonManager::_process(double delta) {
 	for (int i = 0; i < mBalloons.size(); i++) {
 		Balloon *balloon = Object::cast_to<Balloon>(mBalloons[i]);
 
-		
-			//print_line("balloon rendered");
-			//balloon->set_visible(true);
-			Vector2 newPosition;
-			newPosition.x = balloon->get_position().x + cos(time_passed * frequency);
-			newPosition.y = balloon->get_position().y + (balloon->getSpeed() * delta) * -1;
-			balloon->set_position(newPosition);
-		
+		//print_line("balloon rendered");
+		//balloon->set_visible(true);
+		Vector2 newPosition;
+		newPosition.x = balloon->get_position().x + cos(time_passed * frequency);
+		newPosition.y = balloon->get_position().y + (balloon->getSpeed() * delta) * -1;
+		balloon->set_position(newPosition);
 	}
 }

@@ -18,6 +18,7 @@ private:
 	AudioStreamPlayer *sound = nullptr;
 	Ref<RandomNumberGenerator> mRng;
 	Ref<Texture2D> tex = nullptr;
+	
 
 protected:
 	static void _bind_methods();

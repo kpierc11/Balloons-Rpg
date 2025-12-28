@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyprfm7o5itx3"
-path="res://.godot/imported/blue-balloon.png-93758f194bdb68c705a5b7632c236ecc.ctex"
+uid="uid://cmjihlnixurga"
+path="res://.godot/imported/green-balloon.png-c448c2d052f33ddf3a5b1ab7045054fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/blue-balloon.png"
-dest_files=["res://.godot/imported/blue-balloon.png-93758f194bdb68c705a5b7632c236ecc.ctex"]
+source_file="res://assets/sprites/balloons/green-balloon.png"
+dest_files=["res://.godot/imported/green-balloon.png-c448c2d052f33ddf3a5b1ab7045054fa.ctex"]
 
 [params]
 

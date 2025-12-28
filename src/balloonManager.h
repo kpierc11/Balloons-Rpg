@@ -17,7 +17,8 @@ private:
 	int balloonAmount;
 	Area2D *mouseArea;
 	CollisionShape2D *shape;
-	int score; 
+	int score;
+	Array balloonSprites; 
 
 protected:
 	static void _bind_methods();
@@ -31,5 +32,7 @@ public:
 	int getBalloonAmount();
 	void setBalloonAmount(int balloonCount);
 	void createBalloon();
+	void setBalloonSprites(const Array &p_array);
+	Array getBalloonSprites() const;
 };
 }; //namespace godot

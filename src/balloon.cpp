@@ -76,10 +76,6 @@ void godot::Balloon::_ready() {
 	circle->set_radius(12);
 	shape->set_shape(circle);
 	shape->set_position({ 0.0f, -5.0f });
-
-	//set texture for balloon
-	tex = ResourceLoader::get_singleton()->load("res://assets/sprites/blue-balloon.png");
-	set_texture(tex);
 }
 
 void godot::Balloon::_input(const Ref<InputEvent> &p_event) {
