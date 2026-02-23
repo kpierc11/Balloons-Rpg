@@ -9,9 +9,11 @@ using namespace godot;
 
 void godot::BalloonManager::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setBalloonAmount", "balloonAmount"), &BalloonManager::setBalloonAmount);
+	ClassDB::bind_method(D_METHOD("popAllBalloons"), &BalloonManager::popAllBalloons);
 	ClassDB::bind_method(D_METHOD("getBalloonAmount"), &BalloonManager::getBalloonAmount);
 	ClassDB::bind_method(D_METHOD("setBalloonData"), &BalloonManager::setBalloonData);
 	ClassDB::bind_method(D_METHOD("getBalloonData"), &BalloonManager::getBalloonData);
+	ClassDB::bind_method(D_METHOD("handleBalloonPopped"), &BalloonManager::handleBalloonPopped);
 
 	// Register property so it shows in the inspector & scripts
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "Amount of Balloons"), "setBalloonAmount", "getBalloonAmount");
@@ -23,10 +25,13 @@ void godot::BalloonManager::_bind_methods() {
 					String::num(Variant::OBJECT) + "/" + String::num(PROPERTY_HINT_RESOURCE_TYPE) + ":BalloonData"),
 			"setBalloonData",
 			"getBalloonData");
+
+	ADD_SIGNAL(MethodInfo("balloon_popped", PropertyInfo(Variant::INT, "points")));
 }
 
 godot::BalloonManager::BalloonManager() {
 	balloonAmount = 10;
+	numBalloonsPopped = 0;
 }
 
 godot::BalloonManager::~BalloonManager() {
@@ -76,12 +81,17 @@ void godot::BalloonManager::_ready() {
 		balloon->set_position(Vector2(ranBalloonPos, vpRect.size.y + 100.0f));
 		balloon->setSpeed(ranBalloonFloatSpeed);
 		balloon->set_sprite_frames(frames);
+		balloon->connect("popped", Callable(this, "handleBalloonPopped"));
 		//balloon->setAnimationName(data->getAnimName());
 		//balloon->set_visible(false);
 
 		add_child(balloon);
 		mBalloons.push_back(balloon);
 	}
+
+	//Setup level manager
+	lvlManager = get_node<LevelManager>("/root/Main/CanvasLayer/LevelManager");
+
 }
 
 int godot::BalloonManager::getBalloonAmount() {
@@ -118,6 +128,25 @@ godot::TypedArray<BalloonData> godot::BalloonManager::getBalloonData() const {
 	return godot::TypedArray<BalloonData>();
 }
 
+void godot::BalloonManager::popAllBalloons() {
+	for (int i = 0; i < mBalloons.size(); i++) {
+		Balloon *balloon = Object::cast_to<Balloon>(mBalloons[i]);
+		balloon->play("pop");
+		balloon->getSound()->play();
+	}
+}
+
+void godot::BalloonManager::handleBalloonPopped(int points) {
+	emit_signal("balloon_popped", points);
+	numBalloonsPopped += 1;
+
+	if (numBalloonsPopped == lvlManager->get_current_level() * 10) {
+		int level = lvlManager->get_current_level();
+		lvlManager->set_current_level(level += 1);
+		lvlManager->emit_signal("level_updated");
+	}
+}
+
 void godot::BalloonManager::_process(double delta) {
 	//set mouse area position to the mouse location
 	float mouseX = get_local_mouse_position().x;
@@ -129,14 +158,26 @@ void godot::BalloonManager::_process(double delta) {
 	float amplitude = 50.0f;
 	float frequency = 1.5f;
 
-	for (int i = 0; i < mBalloons.size(); i++) {
+	Viewport *vp = get_viewport();
+	Rect2 vpRect = vp->get_visible_rect();
+	Vector2 vpSize = vpRect.size;
+
+	for (int i = 0; i < lvlManager->get_current_level() * 10; i++) {
 		Balloon *balloon = Object::cast_to<Balloon>(mBalloons[i]);
 
-		//print_line("balloon rendered");
-		//balloon->set_visible(true);
-		Vector2 newPosition;
-		newPosition.x = balloon->get_position().x + cos(time_passed * frequency);
-		newPosition.y = balloon->get_position().y + (balloon->getSpeed() * delta) * -1;
-		balloon->set_position(newPosition);
+		if (balloon->is_visible()) {
+			//print_line("balloon rendered");
+			//balloon->set_visible(true);
+			Vector2 newPosition;
+			newPosition.x = balloon->get_position().x + cos(time_passed * frequency);
+			newPosition.y = balloon->get_position().y + (balloon->getSpeed() * delta) * -1;
+
+			if (newPosition.x > vpRect.size.x - 10 || newPosition.x < 10) 
+			{
+				newPosition.x = balloon->get_position().x - cos((time_passed * frequency) * -1);
+			}
+
+			balloon->set_position(newPosition);
+		}
 	}
 }

@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://b2s424sr7bu4s"]
+
+[ext_resource type="Texture2D" uid="uid://cvdpkwroghrti" path="res://assets/animations/red-balloon-animation-pop.png" id="1_ygl34"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho5al"]
+atlas = ExtResource("1_ygl34")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bh58"]
+atlas = ExtResource("1_ygl34")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qv7g"]
+atlas = ExtResource("1_ygl34")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws1go"]
+atlas = ExtResource("1_ygl34")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68r3v"]
+atlas = ExtResource("1_ygl34")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho5al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bh58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qv7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68r3v")
+}],
+"loop": true,
+"name": &"pop",
+"speed": 16.0
+}]

@@ -1,29 +1,29 @@
 [gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://clqmymbhrue3t"]
 
-[ext_resource type="Texture2D" uid="uid://byjgkxjp62eb0" path="res://assets/animations/teal-balloon-anim.png" id="1_5wjv7"]
+[ext_resource type="Texture2D" uid="uid://byjgkxjp62eb0" path="res://assets/animations/teal-balloon-anim.png" id="1_wtwvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u71nl"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8mup"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10nth"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbn14"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2glh"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47a1"]
-atlas = ExtResource("1_5wjv7")
+atlas = ExtResource("1_wtwvu")
 region = Rect2(160, 0, 32, 32)
 
 [resource]
@@ -49,5 +49,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"pop",
-"speed": 5.0
+"speed": 16.0
 }]

@@ -1,6 +1,7 @@
 #include "register_types.h"
 
 #include "balloonManager.h"
+#include "levelManager.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -12,10 +13,11 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-
+	
 	GDREGISTER_RUNTIME_CLASS(Balloon);
 	GDREGISTER_RUNTIME_CLASS(BalloonData);
 	GDREGISTER_RUNTIME_CLASS(BalloonManager);
+	GDREGISTER_RUNTIME_CLASS(LevelManager);
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {

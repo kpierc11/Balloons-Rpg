@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpjtjcu0vfggr"]
+[gd_scene load_steps=3 format=3 uid="uid://cpjtjcu0vfggr"]
+
+[ext_resource type="Script" uid="uid://1bo2h623ajm8" path="res://assets/scripts/handleBalloonPop.gd" id="1_21nk7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5k2w"]
 bg_color = Color(0.24705882, 0.25490198, 0.2784314, 0.43529412)
@@ -54,7 +56,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Level" type="Label" parent="Control/MarginContainer3/HBoxContainer"]
+[node name="score" type="Label" parent="Control/MarginContainer3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 10
@@ -72,3 +74,15 @@ offset_bottom = 38.0
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 319.0
+offset_right = 113.0
+offset_bottom = 341.0
+theme_override_font_sizes/font_size = 10
+text = "Secret Button"
+script = ExtResource("1_21nk7")
+
+[connection signal="pressed" from="Control/Button" to="Control/Button" method="_on_pressed"]

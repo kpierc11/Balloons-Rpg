@@ -1,4 +1,5 @@
 #pragma once
+#include "levelManager.h"
 #include <godot_cpp/classes/animated_sprite2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/audio_stream_player.hpp>
@@ -18,6 +19,7 @@ private:
 	AudioStreamPlayer *sound = nullptr;
 	Ref<RandomNumberGenerator> mRng;
 	Ref<Texture2D> tex = nullptr;
+	bool isPopped = false;
 
 protected:
 	static void _bind_methods();
@@ -32,6 +34,9 @@ public:
 
 	float getSpeed();
 	void setSpeed(float speed);
+	void setPopped(bool hasPopped);
+	bool hasPopped();
+	AudioStreamPlayer *getSound();
 	void onAnimationFinished();
 	void handleMouseEntered(Area2D *other_area);
 	void handleBalloonClicked(Node *viewport, Ref<InputEvent> event, int shape_idx);
