@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6ek13h1fgfmy"]
+[gd_scene load_steps=17 format=3 uid="uid://c6ek13h1fgfmy"]
 
 [ext_resource type="Texture2D" uid="uid://dka8at7t2fvam" path="res://assets/background/blue sky/1.png" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://5yh62ac2kkom" path="res://assets/sprites/mouse-sword-godot-export.png" id="1_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dw1mf3cwvowau" path="res://assets/background/blue sky/2.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c5wiwharfiuo3" path="res://assets/background/blue sky/3.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bm17o8fbx6w44" path="res://assets/background/blue sky/4.png" id="4_1bvp3"]
@@ -11,6 +12,10 @@
 [ext_resource type="SpriteFrames" uid="uid://b2s424sr7bu4s" path="res://assets/animations/red-balloon-frames.tres" id="8_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dkh260q7cq1mt" path="res://assets/sprites/balloons/red-balloon.png" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://dl6fxw7acf70o" path="res://assets/scripts/score.gd" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://n1e8jidcqvcx" path="res://assets/scripts/mouse_2d.gd" id="12_dg77c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(30.88153, 152.15425)
 
 [sub_resource type="BalloonData" id="BalloonData_4c57u"]
 sprite = ExtResource("7_kek77")
@@ -26,6 +31,21 @@ frames = ExtResource("8_4c57u")
 zoom = Vector2(0.05, 0.05)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MouseSword" type="Sprite2D" parent="CanvasLayer"]
+z_index = 4096
+rotation = -0.4886922
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ycdy4")
+centered = false
+offset = Vector2(-125, -68)
+script = ExtResource("12_dg77c")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/MouseSword"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/MouseSword/Area2D"]
+position = Vector2(2.921523, 23.918566)
+shape = SubResource("RectangleShape2D_ycdy4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 position = Vector2(329.5, 185.99997)
@@ -65,5 +85,6 @@ script = ExtResource("11_efxa6")
 levelManager = NodePath("../LevelManager")
 balloonManager = NodePath("../BalloonManager")
 
+[connection signal="mouse_entered" from="CanvasLayer/MouseSword/Area2D" to="CanvasLayer/MouseSword" method="_on_area_2d_mouse_entered"]
 [connection signal="level_updated" from="CanvasLayer/LevelManager" to="CanvasLayer/Menu" method="_on_level_manager_level_updated"]
 [connection signal="balloon_popped" from="CanvasLayer/BalloonManager" to="CanvasLayer/Menu" method="_on_balloon_manager_balloon_popped"]
